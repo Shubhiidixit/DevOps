@@ -5,7 +5,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Checkout source code from version control
-                git 'https://github.com/ricky2129/todo-list-java'
+                git 'https://github.com/Shubhiidixit/DevOps'
             }
         }
         
