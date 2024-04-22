@@ -5,7 +5,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Checkout source code from version control
-                git 'https://github.com/Shubhiidixit/DevOps'
+                git url: 'https://github.com/Shubhiidixit/DevOps'
             }
         }
         
@@ -15,9 +15,9 @@ pipeline {
                 withMaven(maven: 'Maven') {
                     // Run Maven clean and package goals
                     sh 'mvn clean package'
+                }
             }
         }
-    
         
         stage('Test') {
             steps {
@@ -25,14 +25,12 @@ pipeline {
                 sh 'mvn test'
             }
         }
-    }
         
         stage('Archive') {
             steps {
                 // Archive the JAR file as an artifact
                 archiveArtifacts 'target/*.jar'
             }
-             
-        }
-    }
+        }
+    }
 }
