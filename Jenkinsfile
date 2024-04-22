@@ -10,9 +10,10 @@ pipeline {
         }
         
         stage('Build') {
-            steps {
-                // Compile Java code and package it into a JAR file
-                sh 'mvn clean package'
+            steps {  // Use the configured Maven installation
+                withMaven(maven: 'Maven') {
+                    // Run Maven clean and package goals
+                    sh 'mvn clean package'
             }
         }
         
